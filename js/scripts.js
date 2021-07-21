@@ -14,7 +14,7 @@ let objClock = {
     getCurrentTime:function(){
         let now = new Date();
         this.hours = now.getHours();
-        if(hours >= 12){
+        if(this.hours >= 12){
             this.hours = this.hours - 12;
         }
         this.minutes = now.getMinutes(); 
@@ -25,6 +25,7 @@ let objClock = {
         currentSeconds = currentSeconds * this.seconds;   
         this.secondsAngle = (this.seconds/60) * 360;
         this.minutesAngle = this.calculateMinuteAngle();
+        this.hoursAngle = this.calculateHourAngle();
     },
     calculateMinuteAngle:function(){
         let currentSeconds = this.minutes * 60;
