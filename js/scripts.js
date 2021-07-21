@@ -17,9 +17,18 @@ let objClock = {
         this.minutes = now.getMinutes(); 
         this.seconds = now.getSeconds();  
     },
-    calculatingAngles:function(){   
+    calculatingAngles:function(){
+        let currentSeconds = this.minutes * 60;
+        currentSeconds = currentSeconds * this.seconds;   
         this.secondsAngle = (this.seconds/60) * 360;
-        this.minutesAngle = (((this.minutes * 60) + this.seconds) / 3600) * 360;
+        this.minutesAngle = this.calculateMinuteAngle();
+    },
+    calculateMinuteAngle:function(){
+        let currentSeconds = this.minutes * 60;
+        currentSeconds = currentSeconds + this.seconds;
+        let percentage = currentSeconds / 3600;
+        let angle = percentage * 360;
+        return angle;
     },
     adjustHands:function(){
         this.objSecondHand.style.transform = 'rotate('+this.secondsAngle+'deg)';
