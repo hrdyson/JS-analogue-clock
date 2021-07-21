@@ -19,9 +19,11 @@ let objClock = {
     },
     calculatingAngles:function(){   
         this.secondsAngle = (this.seconds/60) * 360;
+        this.minutesAngle = (((this.minutes * 60) + this.seconds) / 3600) * 360;
     },
     adjustHands:function(){
         this.objSecondHand.style.transform = 'rotate('+this.secondsAngle+'deg)';
+        this.objMinuteHand.style.transform = 'rotate('+this.minutesAngle+'deg)';
     }
 }
 
